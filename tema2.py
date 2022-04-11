@@ -9,7 +9,6 @@ for user in users:
   if (user['username'] == username):
     if (user['password'] == password):
       print(f'Seja bem-vindo, {username}!')
-      break
 
     else:
       print('Senha inválida!')
