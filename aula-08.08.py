@@ -1,20 +1,27 @@
+# ATENÇÃO!!
+# Instalar biblioteca inquirer
+# > pip install inquirer
+import inquirer
+
+
 class Aluno:
     def __init__(self, nome: str, disciplinas, serie: int, tempoLivre):
-        self.nome = nome;
-        self.disciplinas = disciplinas;
+        self.nome = nome
+        self.disciplinas = disciplinas
         self.serie = serie
         self.tempoLivre = tempoLivre
-        
-# disciplinas = str(input('Disciplinas que você tem(separe por ","): '))
-input_disciplinas = 'matemática, português, química'.split(',')
-disciplinas = [i.strip() for i in input_disciplinas]
 
-dificuldade_diciplinas = []
 
-for dis in disciplinas:
-    dificuldade = str(input(f'Você tem dificuldade em {dis}? (s/n)')).lower()
-    
-    dificuldade_diciplinas.append({ 
-        "disciplina": dis, 
-        "dificuldade": True if dificuldade == 's' else False  
-    })
+print('Quais matérias você tem?')
+print('Se for mais que uma separe por espaços.')
+disciplinas = str(input('> ')).split(' ')
+
+perguntas_dificuldade_msg = 'Em quais dessas matérias você tem dificuldade? \nEspaço para selecionar ou desmarcar'
+perguntas_dificuldade = [
+    inquirer.Checkbox(
+        'dificuldades', message=perguntas_dificuldade_msg, choices=disciplinas)
+]
+
+materias_com_dificuldade = inquirer.prompt(
+    perguntas_dificuldade
+)['dificuldades']
