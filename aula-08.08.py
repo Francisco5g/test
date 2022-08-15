@@ -49,25 +49,18 @@ perguntas_dificuldade = [inquirer.Checkbox('dificuldades', message=perguntas_dif
 
 disciplinasDificuldade = inquirer.prompt(perguntas_dificuldade)['dificuldades']
 
-# perguntas_aluno = [
-#     inquirer.Text('nome', 'Qual seu nome? '),
-#     inquirer.Text('tempo', 'Em média, quantas horas você tem livre por dia? '),
-#     inquirer.Text('serie', 'Qual a sua série? '),
-# ]
-# perguntas_aluno_res = inquirer.prompt(perguntas_aluno)
-
-# aluno = Aluno(
-#     nome=perguntas_aluno_res['nome'], 
-#     disciplinas=disciplinasTodas, 
-#     tempo=perguntas_aluno_res['tempo'], 
-#     serie=perguntas_aluno_res['serie']
-# )
+perguntas_aluno = [
+    inquirer.Text('nome', 'Qual seu nome? '),
+    inquirer.Text('tempo', 'Em média, quantas horas você tem livre por dia? '),
+    inquirer.Text('serie', 'Qual a sua série? '),
+]
+perguntas_aluno_res = inquirer.prompt(perguntas_aluno)
 
 aluno = Aluno(
-    nome='Francisco',
-    disciplinas=disciplinasTodas,
-    tempo=4,
-    serie=1
+    nome=perguntas_aluno_res['nome'], 
+    disciplinas=disciplinasTodas, 
+    tempo=perguntas_aluno_res['tempo'], 
+    serie=perguntas_aluno_res['serie']
 )
 
 for disci in disciplinasDificuldade:
